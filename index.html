@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Block Explorer - Experience the 2D Minecraft Adventure</title>
+    <meta name="description" content="Explore, craft, and create in this 2D Minecraft-inspired adventure. Play Minecraft Block Explorer online with survival and creative modes!">
+    <meta name="keywords" content="minecraft, block explorer, minecraft 2d, mine blocks, sandbox game, crafting game, pixel game">
+    <link rel="canonical" href="https://minecraft-block-explorer.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧱</text></svg>">
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": "Minecraft Block Explorer",
+        "description": "A 2D Minecraft-inspired adventure where you can explore, craft, and create in an open world playground.",
+        "genre": ["Sandbox", "Adventure", "Crafting"],
+        "playMode": "SinglePlayer, MultiPlayer",
+        "applicationCategory": "Game",
+        "operatingSystem": "Web Browser",
+        "gamePlatform": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+        }
+    }
+    </script>
+    
+    <style>
+        /* CSS Variables for Theming */
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #8BC34A;
+            --background-light: #f9f9f9;
+            --text-light: #333;
+            --background-dark: #222;
+            --text-dark: #eee;
+            --accent-color: #FF9800;
+            --shadow-light: 0 2px 10px rgba(0,0,0,0.1);
+            --shadow-dark: 0 2px 10px rgba(0,0,0,0.3);
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        /* Dark Mode */
+        [data-theme="dark"] {
+            --background: var(--background-dark);
+            --text: var(--text-dark);
+            --shadow: var(--shadow-dark);
+        }
+
+        /* Light Mode (Default) */
+        [data-theme="light"] {
+            --background: var(--background-light);
+            --text: var(--text-light);
+            --shadow: var(--shadow-light);
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0,0,0,0.8);
+            padding: 15px 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .logo img, .logo-icon {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: white;
+            font-size: 1.2rem;
+            margin-left: 20px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="25" height="25" x="0" y="0" fill="%23795548" /><rect width="25" height="25" x="25" y="0" fill="%238D6E63" /><rect width="25" height="25" x="50" y="0" fill="%23795548" /><rect width="25" height="25" x="75" y="0" fill="%238D6E63" /><rect width="25" height="25" x="0" y="25" fill="%238D6E63" /><rect width="25" height="25" x="25" y="25" fill="%23795548" /><rect width="25" height="25" x="50" y="25" fill="%238D6E63" /><rect width="25" height="25" x="75" y="25" fill="%23795548" /><rect width="25" height="25" x="0" y="50" fill="%23795548" /><rect width="25" height="25" x="25" y="50" fill="%238D6E63" /><rect width="25" height="25" x="50" y="50" fill="%23795548" /><rect width="25" height="25" x="75" y="50" fill="%238D6E63" /><rect width="25" height="25" x="0" y="75" fill="%238D6E63" /><rect width="25" height="25" x="25" y="75" fill="%23795548" /><rect width="25" height="25" x="50" y="75" fill="%238D6E63" /><rect width="25" height="25" x="75" y="75" fill="%23795548" /></svg>');
+            background-position: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            background-blend-mode: overlay;
+            color: white;
+            text-align: center;
+            padding-top: 60px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            animation: fadeInUp 1.4s ease;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            color: white;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+
+        /* Game Embed Section */
+        .game-section {
+            background-color: var(--background);
+        }
+
+        .game-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: var(--shadow);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .game-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            transition: var(--transition);
+        }
+
+        .game-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 6px solid var(--primary-color);
+            border-top: 6px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        .game-iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+
+        /* Share Buttons */
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .share-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 8px;
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .share-btn.twitter {
+            background-color: #1DA1F2;
+        }
+        
+        .share-btn.facebook {
+            background-color: #4267B2;
+        }
+        
+        .share-btn.linkedin {
+            background-color: #0077B5;
+        }
+        
+        .share-btn.reddit {
+            background-color: #FF4500;
+        }
+        
+        .share-btn.tiktok {
+            background-color: #000000;
+        }
+        
+        .share-btn:hover {
+            transform: translateY(-3px);
+            opacity: 0.9;
+        }
+
+        /* Features Section */
+        .features {
+            background-color: var(--background);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background-color: var(--background);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        /* How to Play Section */
+        .how-to-play {
+            background-color: var(--background);
+        }
+
+        .steps {
+            margin-top: 40px;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            margin-right: 20px;
+        }
+
+        .step-content h3 {
+            margin-bottom: 10px;
+        }
+
+        /* FAQ Section */
+        .faq {
+            background-color: var(--background);
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 15px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question:after {
+            content: '+';
+            font-size: 1.5rem;
+        }
+
+        .faq-item.active .faq-question:after {
+            content: '-';
+        }
+
+        .faq-answer {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+            background-color: var(--background);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 500px;
+        }
+
+        /* Related Games */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .game-card {
+            background-color: var(--background);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .game-thumb {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+
+        .game-info {
+            padding: 15px;
+        }
+
+        .game-name {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .game-desc {
+            font-size: 0.9rem;
+            color: var(--text);
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        /* Cookie Consent */
+        .cookie-consent {
+            position: fixed;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .cookie-consent.show {
+            bottom: 0;
+        }
+
+        .cookie-text {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .cookie-btns {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                background-color: rgba(0, 0, 0, 0.9);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 20px 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                z-index: 1000;
+            }
+
+            .game-iframe {
+                height: 400px;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .step {
+                flex-direction: column;
+            }
+
+            .step-number {
+                margin-bottom: 15px;
+            }
+
+            .cookie-consent {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cookie-text {
+                margin-bottom: 20px;
+                padding-right: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .game-iframe {
+                height: 300px;
+            }
+
+            .share-buttons {
+                flex-wrap: wrap;
+            }
+        }
+
+        /* Game Controls and Share Buttons */
+        .game-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        
+        .game-control-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.2em;
+        }
+        
+        .game-control-btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="#" class="logo">
+                <span class="logo-icon">🧱</span>
+                Minecraft Block Explorer
+            </a>
+            <button class="mobile-menu-btn">☰</button>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#game">Play Now</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-to-play">How to Play</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <button class="theme-toggle">🌙</button>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Experience the 2D Minecraft Adventure</h1>
+            <p>Explore, craft, and create a world of your imaginings in this open-world playground. Mine Blocks is a 2D Minecraft fan action game with regular updates from the development team.</p>
+            <div class="hero-btns">
+                <a href="#game" class="btn">Play Now</a>
+                <a href="#how-to-play" class="btn" style="background-color: transparent; border: 2px solid white;">Learn How to Play</a>
+            </div>
+        </div>
+        <div class="scroll-down">↓</div>
+    </section>
+
+    <!-- Game Embed Section -->
+    <section class="game-section" id="game">
+        <div class="container">
+            <h2>Play Minecraft Block Explorer</h2>
+            <div class="game-controls">
+                <button class="game-control-btn" id="refreshGame" title="Refresh">
+                    🔄
+                </button>
+                <button class="game-control-btn" id="fullscreenGame" title="Fullscreen">
+                    ⛶
+                </button>
+            </div>
+            <div class="game-container">
+                <div class="game-overlay">
+                    <div class="loader"></div>
+                    <p>Loading Game...</p>
+                </div>
+                <iframe class="game-iframe" id="gameIframe" src="https://games.crazygames.com/en_US/mine-blocks/index.html?v=1.327" allowfullscreen></iframe>
+            </div>
+            <div class="share-buttons">
+                <a href="#" class="share-btn twitter" aria-label="Share on Twitter">
+                    <span>𝕏</span>
+                </a>
+                <a href="#" class="share-btn facebook" aria-label="Share on Facebook">
+                    <span>f</span>
+                </a>
+                <a href="#" class="share-btn linkedin" aria-label="Share on LinkedIn">
+                    <span>in</span>
+                </a>
+                <a href="#" class="share-btn reddit" aria-label="Share on Reddit">
+                    <span>r</span>
+                </a>
+                <a href="#" class="share-btn tiktok" aria-label="Share on TikTok">
+                    <span>♪</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2>Game Features</h2>
+            <p>Discover what makes Minecraft Block Explorer an exciting adventure</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏠</div>
+                    <h3>Survival & Creative Modes</h3>
+                    <p>Choose between challenging survival gameplay or unlimited creative freedom to build anything you imagine.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Online Multiplayer</h3>
+                    <p>Join your friends online and compete in the exciting scavenger hunt mode, racing to find all items first!</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💾</div>
+                    <h3>Save Your Progress</h3>
+                    <p>Your worlds and creations are saved automatically, so you can continue your adventure anytime.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔨</div>
+                    <h3>Crafting System</h3>
+                    <p>Collect resources and combine them to craft tools, weapons, and building materials.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Infinite Worlds</h3>
+                    <p>Explore procedurally generated worlds with different biomes, caves, and structures.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎮</div>
+                    <h3>Simple Controls</h3>
+                    <p>Easy to learn controls similar to the original Minecraft, making it accessible for all players.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Play Section -->
+    <section class="how-to-play" id="how-to-play">
+        <div class="container">
+            <h2>How to Play</h2>
+            <p>Get started with these simple steps to begin your Minecraft Block Explorer adventure</p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Choose Your Game Mode</h3>
+                        <p>Select either Survival mode for a challenging adventure where you'll need to gather resources and defend yourself, or Creative mode for unlimited blocks and flying abilities to build freely.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Learn the Controls</h3>
+                        <p>Move your character with the WASD keys. Sprint by double-tapping A or D. Collect resources by clicking and holding on nearby blocks or creatures. Place blocks by right-clicking on an empty space.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Craft and Build</h3>
+                        <p>Open your inventory by pressing E. Here, you can craft items and equip armor. Combine materials to create tools, weapons, and building blocks to construct your shelter.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Survive and Explore</h3>
+                        <p>In Survival mode, you'll need to manage your hunger, health, and defend against hostile mobs. Build a shelter before nightfall when monsters come out. Explore caves, find rare resources, and expand your world.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Join Multiplayer (Optional)</h3>
+                        <p>For an extra challenge, join the online scavenger hunt where you can team up with friends to find all 10 items in just 8 minutes before anyone else!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">Does Minecraft Block Explorer have multiplayer?</div>
+                    <div class="faq-answer">
+                        <p>Yes, the game offers a multiplayer mode. You can team up with friends online to compete in a scavenger hunt, racing to find all 10 items in just 8 minutes before anyone else!</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">When was Minecraft Block Explorer released?</div>
+                    <div class="faq-answer">
+                        <p>Minecraft Block Explorer was originally released in Flash format and has been rebuilt in HTML5. The HTML5 version has been available since 2021 and receives regular updates from the development team.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What's the difference between Survival and Creative mode?</div>
+                    <div class="faq-answer">
+                        <p>In Survival mode, you need to collect resources, craft tools, build shelter, and defend against hostile mobs. You have limited health and hunger to manage. In Creative mode, you have unlimited resources, can fly, and won't take damage, allowing you to focus entirely on building and creating.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can I save my progress in the game?</div>
+                    <div class="faq-answer">
+                        <p>Yes, your worlds and creations are saved automatically. This allows you to continue your adventure whenever you return to the game. You can also manually save your progress through the in-game menu.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What are the system requirements?</div>
+                    <div class="faq-answer">
+                        <p>Minecraft Block Explorer is a browser-based game that runs on HTML5, so it requires a relatively modern browser. It works on most devices including desktops, laptops, tablets, and even some mobile phones. No installation or plugins are required.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Games Section -->
+    <section class="related-games" id="related-games">
+        <div class="container">
+            <h2>More Games You'll Love</h2>
+            <p>If you enjoy Minecraft Block Explorer, check out these similar games:</p>
+            <div class="games-grid">
+                <a href="https://ragdoll-archers.app/" class="game-card">
+                    <img src="./img/tmp.jpg" alt="Bloxd.io" class="game-thumb">
+                    <div class="game-info">
+                        <h3 class="game-name">Bloxd.io</h3>
+                        <p class="game-desc">A similar voxel-based building game with multiple game modes.</p>
+                    </div>
+                </a>
+                <a href="https://ragdoll-archers.app/" class="game-card">
+                    <img src="./img/tmp.jpg" alt="Bloxd.io" class="game-thumb">
+                    <div class="game-info">
+                        <h3 class="game-name">Bloxd.io</h3>
+                        <p class="game-desc">A similar voxel-based building game with multiple game modes.</p>
+                    </div>
+                </a>
+                <a href="https://ragdoll-archers.app/" class="game-card">
+                    <img src="./img/tmp.jpg" alt="Bloxd.io" class="game-thumb">
+                    <div class="game-info">
+                        <h3 class="game-name">Bloxd.io</h3>
+                        <p class="game-desc">A similar voxel-based building game with multiple game modes.</p>
+                    </div>
+                </a>
+                <a href="https://ragdoll-archers.app/" class="game-card">
+                    <img src="./img/tmp.jpg" alt="Bloxd.io" class="game-thumb">
+                    <div class="game-info">
+                        <h3 class="game-name">Bloxd.io</h3>
+                        <p class="game-desc">A similar voxel-based building game with multiple game modes.</p>
+                    </div>
+                </a>
+                <a href="https://ragdoll-archers.app/" class="game-card">
+                    <img src="./img/tmp.jpg" alt="Bloxd.io" class="game-thumb">
+                    <div class="game-info">
+                        <h3 class="game-name">Bloxd.io</h3>
+                        <p class="game-desc">A similar voxel-based building game with multiple game modes.</p>
+                    </div>
+                </a>
+                <a href="https://ragdoll-archers.app/" class="game-card">
+                    <img src="./img/tmp.jpg" alt="Bloxd.io" class="game-thumb">
+                    <div class="game-info">
+                        <h3 class="game-name">Bloxd.io</h3>
+                        <p class="game-desc">A similar voxel-based building game with multiple game modes.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Minecraft Block Explorer</h3>
+                    <p>Experience the 2D Minecraft adventure with survival and creative modes. Build, craft, and explore in this engaging sandbox game.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#game">Play Now</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#how-to-play">How to Play</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">DMCA</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:contact@minecraft-block-explorer.com">Email Us</a></li>
+                        <li><a href="#">Discord Community</a></li>
+                        <li><a href="#">Report a Bug</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Minecraft Block Explorer. All rights reserved. This is a fan-made website and is not affiliated with Mojang or Microsoft.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cookie Consent -->
+    <div class="cookie-consent">
+        <div class="cookie-text">
+            <p>We use cookies to enhance your browsing experience. By continuing to use our website, you agree to our <a href="#">Cookie Policy</a>.</p>
+        </div>
+        <div class="cookie-btns">
+            <button class="btn cookie-accept">Accept</button>
+            <button class="btn cookie-decline" style="background-color: transparent; border: 1px solid white;">Decline</button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Theme Toggle
+        const themeToggle = document.querySelector('.theme-toggle');
+        const body = document.body;
+        
+        themeToggle.addEventListener('click', () => {
+            if (body.getAttribute('data-theme') === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeToggle.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeToggle.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        
+        // Check for saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            body.setAttribute('data-theme', savedTheme);
+            themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+        }
+        
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+        
+        // Close mobile menu when clicking on a link
+        const navLinksItems = document.querySelectorAll('.nav-links li a');
+        navLinksItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.textContent = '☰';
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Game iframe loading
+        const gameIframe = document.querySelector('.game-iframe');
+        const gameOverlay = document.querySelector('.game-overlay');
+        
+        gameIframe.addEventListener('load', () => {
+            // Simulate loading for better UX (remove in production if not needed)
+            setTimeout(() => {
+                gameOverlay.classList.add('hidden');
+            }, 2000);
+        });
+        
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Social Share Buttons
+        const shareButtons = document.querySelectorAll('.share-btn');
+        const pageUrl = encodeURIComponent(window.location.href);
+        const pageTitle = encodeURIComponent(document.title);
+        
+        shareButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                let shareUrl = '';
+                
+                if (button.classList.contains('twitter')) {
+                    shareUrl = `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
+                } else if (button.classList.contains('facebook')) {
+                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+                } else if (button.classList.contains('linkedin')) {
+                    shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`;
+                } else if (button.classList.contains('reddit')) {
+                    shareUrl = `https://www.reddit.com/submit?url=${pageUrl}&title=${pageTitle}`;
+                } else if (button.classList.contains('tiktok')) {
+                    shareUrl = `https://www.tiktok.com/`;
+                }
+                
+                window.open(shareUrl, '_blank', 'width=600,height=400');
+            });
+        });
+        
+        // Cookie Consent
+        const cookieConsent = document.querySelector('.cookie-consent');
+        const cookieAccept = document.querySelector('.cookie-accept');
+        const cookieDecline = document.querySelector('.cookie-decline');
+        
+        // Show cookie consent if not previously accepted
+        if (!localStorage.getItem('cookieConsent')) {
+            setTimeout(() => {
+                cookieConsent.classList.add('show');
+            }, 2000);
+        }
+        
+        cookieAccept.addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'accepted');
+            cookieConsent.classList.remove('show');
+        });
+        
+        cookieDecline.addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'declined');
+            cookieConsent.classList.remove('show');
+        });
+        
+        // Scroll Down Button in Hero Section
+        const scrollDownBtn = document.querySelector('.scroll-down');
+        
+        scrollDownBtn.addEventListener('click', () => {
+            const gameSection = document.querySelector('#game');
+            window.scrollTo({
+                top: gameSection.offsetTop - 70,
+                behavior: 'smooth'
+            });
+        });
+
+        // Game Controls
+        const refreshGame = document.getElementById('refreshGame');
+        const fullscreenGame = document.getElementById('fullscreenGame');
+        
+        // Refresh game
+        refreshGame.addEventListener('click', () => {
+            gameIframe.src = gameIframe.src;
+            gameOverlay.classList.remove('hidden');
+        });
+        
+        // Fullscreen toggle
+        fullscreenGame.addEventListener('click', () => {
+            if (!document.fullscreenElement) {
+                if (gameIframe.requestFullscreen) {
+                    gameIframe.requestFullscreen();
+                } else if (gameIframe.webkitRequestFullscreen) {
+                    gameIframe.webkitRequestFullscreen();
+                } else if (gameIframe.msRequestFullscreen) {
+                    gameIframe.msRequestFullscreen();
+                }
+                fullscreenGame.innerHTML = '⛶';
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+                fullscreenGame.innerHTML = '⛶';
+            }
+        });
+        
+        // Update fullscreen button text when exiting fullscreen
+        document.addEventListener('fullscreenchange', () => {
+            if (!document.fullscreenElement) {
+                fullscreenGame.innerHTML = '⛶';
+            }
+        });
+    </script>
+</body>
+</html>
