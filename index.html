@@ -3,26 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minecraft Block Explorer - Experience the 2D Minecraft Adventure</title>
-    <meta name="description" content="Explore, craft, and create in this 2D Minecraft-inspired adventure. Play Minecraft Block Explorer online with survival and creative modes!">
-    <meta name="keywords" content="minecraft, block explorer, minecraft 2d, mine blocks, sandbox game, crafting game, pixel game">
-    <link rel="canonical" href="https://minecraft-block-explorer.com">
-    
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧱</text></svg>">
+    <title>Minecraft Blox Dimension - Exciting Voxel Adventure Game</title>
+    <meta name="description" content="Play Minecraft Blox Dimension, a free online voxel adventure game featuring parkour, sandbox creativity, and combat modes. Join millions of players now!">
+    <meta name="keywords" content="minecraft blox dimension, voxel games, online games, parkour games, sandbox games, io games, multiplayer games">
+    <link rel="canonical" href="https://minecraft-blox-dimension.com">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧊</text></svg>">
     
     <!-- Schema.org structured data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "VideoGame",
-        "name": "Minecraft Block Explorer",
-        "description": "A 2D Minecraft-inspired adventure where you can explore, craft, and create in an open world playground.",
-        "genre": ["Sandbox", "Adventure", "Crafting"],
-        "playMode": "SinglePlayer, MultiPlayer",
-        "applicationCategory": "Game",
+        "name": "Minecraft Blox Dimension",
+        "description": "An exciting voxel adventure game featuring parkour, sandbox creativity, and combat game modes.",
+        "genre": ["Adventure", "Sandbox", "Parkour", "Multiplayer"],
+        "url": "https://minecraft-blox-dimension.com",
+        "image": "https://minecraft-blox-dimension.com/logo.png",
         "operatingSystem": "Web Browser",
-        "gamePlatform": "Web Browser",
+        "applicationCategory": "Game",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.7",
+            "ratingCount": "3856"
+        },
         "offers": {
             "@type": "Offer",
             "price": "0",
@@ -31,139 +34,54 @@
         }
     }
     </script>
-    
+
     <style>
-        /* CSS Variables for Theming */
         :root {
-            --primary-color: #4CAF50;
-            --secondary-color: #8BC34A;
-            --background-light: #f9f9f9;
-            --text-light: #333;
-            --background-dark: #222;
-            --text-dark: #eee;
-            --accent-color: #FF9800;
-            --shadow-light: 0 2px 10px rgba(0,0,0,0.1);
-            --shadow-dark: 0 2px 10px rgba(0,0,0,0.3);
-            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --primary-color: #5D8BF4;
+            --secondary-color: #44c767;
+            --text-color: #333;
+            --background-color: #f9f9f9;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --box-shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.15);
+            --border-radius: 8px;
             --transition: all 0.3s ease;
         }
 
-        /* Dark Mode */
-        [data-theme="dark"] {
-            --background: var(--background-dark);
-            --text: var(--text-dark);
-            --shadow: var(--shadow-dark);
+        .dark-mode {
+            --primary-color: #7D9EFF;
+            --secondary-color: #5AD85A;
+            --text-color: #f1f1f1;
+            --background-color: #1a1a1a;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --box-shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.4);
         }
 
-        /* Light Mode (Default) */
-        [data-theme="light"] {
-            --background: var(--background-light);
-            --text: var(--text-light);
-            --shadow: var(--shadow-light);
-        }
-
-        /* Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: var(--font-main);
-            background-color: var(--background);
-            color: var(--text);
-            line-height: 1.6;
+            background-color: var(--background-color);
+            color: var(--text-color);
             transition: var(--transition);
             overflow-x: hidden;
         }
 
-        a {
-            color: var(--primary-color);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        a:hover {
-            color: var(--accent-color);
-        }
-
-        h1, h2, h3, h4 {
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-        }
-
-        h2 {
-            font-size: 2rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-
-        h2:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
+        header {
             background-color: var(--primary-color);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--box-shadow);
         }
 
-        h3 {
-            font-size: 1.5rem;
-        }
-
-        .container {
-            width: 100%;
+        .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 600;
-        }
-
-        .btn:hover {
-            background-color: var(--accent-color);
-            transform: translateY(-2px);
-        }
-
-        section {
-            padding: 60px 0;
-        }
-
-        /* Navigation Bar */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(0,0,0,0.8);
-            padding: 15px 0;
-            z-index: 1000;
-            transition: var(--transition);
-        }
-
-        .navbar.scrolled {
-            padding: 10px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-
-        .navbar-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -175,50 +93,41 @@
             font-size: 1.5rem;
             font-weight: 700;
             color: white;
+            text-decoration: none;
         }
 
-        .logo img, .logo-icon {
-            margin-right: 10px;
+        .logo-icon {
             font-size: 2rem;
+            margin-right: 0.5rem;
         }
 
-        .nav-links {
+        nav ul {
             display: flex;
             list-style: none;
         }
 
-        .nav-links li {
-            margin-left: 30px;
+        nav ul li {
+            margin-left: 1.5rem;
         }
 
-        .nav-links a {
+        nav ul li a {
             color: white;
-            font-weight: 600;
-            position: relative;
-        }
-
-        .nav-links a:after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
             transition: var(--transition);
         }
 
-        .nav-links a:hover:after {
-            width: 100%;
+        nav ul li a:hover {
+            opacity: 0.8;
         }
 
         .theme-toggle {
             background: none;
             border: none;
-            cursor: pointer;
             color: white;
-            font-size: 1.2rem;
-            margin-left: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-left: 1.5rem;
         }
 
         .mobile-menu-btn {
@@ -230,72 +139,100 @@
             cursor: pointer;
         }
 
-        /* Hero Section */
-        .hero {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="25" height="25" x="0" y="0" fill="%23795548" /><rect width="25" height="25" x="25" y="0" fill="%238D6E63" /><rect width="25" height="25" x="50" y="0" fill="%23795548" /><rect width="25" height="25" x="75" y="0" fill="%238D6E63" /><rect width="25" height="25" x="0" y="25" fill="%238D6E63" /><rect width="25" height="25" x="25" y="25" fill="%23795548" /><rect width="25" height="25" x="50" y="25" fill="%238D6E63" /><rect width="25" height="25" x="75" y="25" fill="%23795548" /><rect width="25" height="25" x="0" y="50" fill="%23795548" /><rect width="25" height="25" x="25" y="50" fill="%238D6E63" /><rect width="25" height="25" x="50" y="50" fill="%23795548" /><rect width="25" height="25" x="75" y="50" fill="%238D6E63" /><rect width="25" height="25" x="0" y="75" fill="%238D6E63" /><rect width="25" height="25" x="25" y="75" fill="%23795548" /><rect width="25" height="25" x="50" y="75" fill="%238D6E63" /><rect width="25" height="25" x="75" y="75" fill="%23795548" /></svg>');
-            background-position: center;
-            background-color: rgba(0, 0, 0, 0.7);
-            background-blend-mode: overlay;
-            color: white;
-            text-align: center;
-            padding-top: 60px;
-        }
-
-        .hero-content {
-            max-width: 800px;
+        section {
+            padding: 3rem 1rem;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
+        .hero {
+            text-align: center;
+            padding: 5rem 1rem;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('data:image/jpeg;base64,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') center/cover no-repeat;
+            color: white;
+            border-radius: var(--border-radius);
+            margin-top: 2rem;
+        }
+
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            animation: fadeInUp 1s ease;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 30px;
-            animation: fadeInUp 1.2s ease;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
-        .hero-btns {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            animation: fadeInUp 1.4s ease;
-        }
-
-        .scroll-down {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 2rem;
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--secondary-color);
             color: white;
-            animation: bounce 2s infinite;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
             cursor: pointer;
+            box-shadow: var(--box-shadow);
         }
 
-        /* Game Embed Section */
-        .game-section {
-            background-color: var(--background);
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
         }
 
         .game-container {
             position: relative;
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            box-shadow: var(--shadow);
-            border-radius: 10px;
+            margin: 2rem auto;
+            border-radius: var(--border-radius);
             overflow: hidden;
+            box-shadow: var(--box-shadow);
+            height: 600px;
+        }
+        
+        .game-controls {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 10px;
+            z-index: 15;
+        }
+        
+        .game-control-btn {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .game-control-btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
         }
 
-        .game-overlay {
+        .game-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .game-loader {
             position: absolute;
             top: 0;
             left: 0;
@@ -303,273 +240,271 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.8);
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             z-index: 10;
-            transition: var(--transition);
-        }
-
-        .game-overlay.hidden {
-            opacity: 0;
-            pointer-events: none;
+            transition: opacity 0.5s ease;
         }
 
         .loader {
-            width: 60px;
-            height: 60px;
-            border: 6px solid var(--primary-color);
-            border-top: 6px solid transparent;
+            border: 5px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
+            border-top: 5px solid var(--secondary-color);
+            width: 50px;
+            height: 50px;
             animation: spin 1s linear infinite;
-            margin-bottom: 20px;
+            margin-bottom: 1rem;
         }
 
-        .game-iframe {
-            width: 100%;
-            height: 600px;
-            border: none;
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
-        /* Share Buttons */
-        .share-buttons {
+        .social-share {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-top: 15px;
+            gap: 1rem;
+            margin: 2rem auto;
         }
-        
-        .share-btn {
+
+        .social-btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 45px;
-            height: 45px;
-            border-radius: 8px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             color: white;
-            font-size: 1.2rem;
             transition: var(--transition);
-            text-decoration: none;
-        }
-        
-        .share-btn.twitter {
-            background-color: #1DA1F2;
-        }
-        
-        .share-btn.facebook {
-            background-color: #4267B2;
-        }
-        
-        .share-btn.linkedin {
-            background-color: #0077B5;
-        }
-        
-        .share-btn.reddit {
-            background-color: #FF4500;
-        }
-        
-        .share-btn.tiktok {
-            background-color: #000000;
-        }
-        
-        .share-btn:hover {
-            transform: translateY(-3px);
-            opacity: 0.9;
         }
 
-        /* Features Section */
+        .social-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .twitter { background-color: #1DA1F2; }
+        .facebook { background-color: #4267B2; }
+        .linkedin { background-color: #0077B5; }
+        .reddit { background-color: #FF4500; }
+        .tiktok { background-color: #000000; }
+
         .features {
-            background-color: var(--background);
-        }
-
-        .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            gap: 2rem;
+            margin: 3rem 0;
         }
 
         .feature-card {
-            background-color: var(--background);
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: var(--shadow);
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
             transition: var(--transition);
             text-align: center;
         }
 
+        .dark-mode .feature-card {
+            background-color: #2a2a2a;
+        }
+
         .feature-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-hover);
         }
 
         .feature-icon {
-            font-size: 3rem;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
             color: var(--primary-color);
-            margin-bottom: 20px;
         }
 
-        /* How to Play Section */
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
         .how-to-play {
-            background-color: var(--background);
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin: 3rem 0;
         }
 
-        .steps {
-            margin-top: 40px;
+        .dark-mode .how-to-play {
+            background-color: #2a2a2a;
         }
 
-        .step {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 30px;
+        .how-to-play ol {
+            margin-left: 1.5rem;
+            counter-reset: item;
+            list-style-type: none;
         }
 
-        .step-number {
-            flex-shrink: 0;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+        .how-to-play li {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-left: 2rem;
+            line-height: 1.6;
+        }
+        
+        .how-to-play li::before {
+            counter-increment: item;
+            content: counter(item);
             background-color: var(--primary-color);
             color: white;
+            font-weight: bold;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
             display: flex;
-            justify-content: center;
             align-items: center;
-            font-weight: 700;
-            margin-right: 20px;
+            justify-content: center;
+            position: absolute;
+            left: -12px;
+            top: 0;
+        }
+        
+        .how-to-play li strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
         }
 
-        .step-content h3 {
-            margin-bottom: 10px;
-        }
-
-        /* FAQ Section */
         .faq {
-            background-color: var(--background);
+            margin: 3rem 0;
         }
 
         .faq-item {
-            margin-bottom: 20px;
-            border-radius: 5px;
-            box-shadow: var(--shadow);
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 1rem;
             overflow: hidden;
+        }
+
+        .dark-mode .faq-item {
+            background-color: #2a2a2a;
         }
 
         .faq-question {
-            padding: 15px 20px;
-            background-color: var(--primary-color);
-            color: white;
-            cursor: pointer;
+            padding: 1rem;
+            font-weight: 600;
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
-
-        .faq-question:after {
-            content: '+';
-            font-size: 1.5rem;
-        }
-
-        .faq-item.active .faq-question:after {
-            content: '-';
+            cursor: pointer;
         }
 
         .faq-answer {
-            padding: 0;
+            padding: 0 1rem;
             max-height: 0;
             overflow: hidden;
-            transition: var(--transition);
-            background-color: var(--background);
+            transition: max-height 0.3s ease;
         }
 
-        .faq-item.active .faq-answer {
-            padding: 20px;
+        .faq-answer.active {
+            padding: 0 1rem 1rem;
             max-height: 500px;
         }
 
-        /* Related Games */
-        .games-grid {
+        .related-games {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
         }
 
         .game-card {
-            background-color: var(--background);
-            border-radius: 10px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
             overflow: hidden;
-            box-shadow: var(--shadow);
             transition: var(--transition);
             text-decoration: none;
-            color: var(--text);
+            color: var(--text-color);
+            display: block;
+        }
+
+        .dark-mode .game-card {
+            background-color: #2a2a2a;
         }
 
         .game-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-hover);
         }
 
         .game-thumb {
             width: 100%;
-            height: 160px;
+            height: 150px;
             object-fit: cover;
         }
 
         .game-info {
-            padding: 15px;
+            padding: 1rem;
         }
 
         .game-name {
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-            color: var(--text);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
         }
 
         .game-desc {
             font-size: 0.9rem;
-            color: var(--text);
             opacity: 0.8;
+            margin: 0;
         }
 
-        /* Footer */
-        .footer {
-            background-color: #333;
+        footer {
+            background-color: var(--primary-color);
             color: white;
-            padding: 40px 0 20px;
+            padding: 2rem 1rem;
+            text-align: center;
+            margin-top: 3rem;
         }
 
         .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
+            gap: 2rem;
+            text-align: left;
         }
 
-        .footer-column h3 {
+        .footer-links h3 {
+            margin-bottom: 1rem;
             font-size: 1.2rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
         }
 
-        .footer-column h3:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 30px;
-            height: 2px;
-            background-color: var(--primary-color);
-        }
-
-        .footer-links {
+        .footer-links ul {
             list-style: none;
         }
 
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-
         .footer-links a {
-            color: #ccc;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: var(--transition);
         }
 
         .footer-links a:hover {
@@ -577,387 +512,269 @@
         }
 
         .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 2rem;
+            opacity: 0.8;
             font-size: 0.9rem;
-            color: #ccc;
         }
 
-        /* Cookie Consent */
-        .cookie-consent {
+        .cookie-alert {
             position: fixed;
-            bottom: -100%;
+            bottom: 0;
             left: 0;
             width: 100%;
             background-color: rgba(0, 0, 0, 0.9);
             color: white;
-            padding: 20px;
+            padding: 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            transition: var(--transition);
+            transform: translateY(100%);
+            transition: transform 0.5s ease;
         }
 
-        .cookie-consent.show {
-            bottom: 0;
+        .cookie-alert.show {
+            transform: translateY(0);
         }
 
-        .cookie-text {
-            flex: 1;
-            padding-right: 20px;
+        .cookie-alert p {
+            margin-right: 1rem;
         }
 
-        .cookie-btns {
-            display: flex;
-            gap: 10px;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0) translateX(-50%);
-            }
-            40% {
-                transform: translateY(-20px) translateX(-50%);
-            }
-            60% {
-                transform: translateY(-10px) translateX(-50%);
-            }
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* Media Queries */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                height: 100vh;
-                width: 70%;
-                background-color: rgba(0, 0, 0, 0.9);
+            .nav-container {
                 flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                transition: var(--transition);
-                z-index: 999;
+                align-items: flex-start;
             }
 
-            .nav-links.active {
-                right: 0;
+            nav {
+                width: 100%;
+                margin-top: 1rem;
+                display: none;
             }
 
-            .nav-links li {
-                margin: 20px 0;
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
             }
 
             .mobile-menu-btn {
                 display: block;
-                z-index: 1000;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
             }
 
-            .game-iframe {
-                height: 400px;
-            }
-
-            .hero-btns {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .step {
-                flex-direction: column;
-            }
-
-            .step-number {
-                margin-bottom: 15px;
-            }
-
-            .cookie-consent {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .cookie-text {
-                margin-bottom: 20px;
-                padding-right: 0;
-            }
-        }
-
-        @media (max-width: 480px) {
             .hero h1 {
                 font-size: 2rem;
             }
 
-            .game-iframe {
-                height: 300px;
-            }
-
-            .share-buttons {
+            .social-share {
                 flex-wrap: wrap;
             }
-        }
 
-        /* Game Controls and Share Buttons */
-        .game-controls {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-            justify-content: flex-end;
-            align-items: center;
-        }
-        
-        .game-control-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 1.2em;
-        }
-        
-        .game-control-btn:hover {
-            background-color: var(--accent-color);
-            transform: translateY(-2px);
+            .game-container {
+                height: 400px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
         }
     </style>
 </head>
-<body data-theme="light">
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="container navbar-container">
+<body id="top">
+    <header>
+        <div class="nav-container">
             <a href="#" class="logo">
-                <span class="logo-icon">🧱</span>
-                Minecraft Block Explorer
+                <span class="logo-icon">🧊</span> Minecraft Blox Dimension
             </a>
-            <button class="mobile-menu-btn">☰</button>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#game">Play Now</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#how-to-play">How to Play</a></li>
-                <li><a href="#faq">FAQ</a></li>
-                <button class="theme-toggle">🌙</button>
-            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#top">Home</a></li>
+                    <li><a href="#play">Play Game</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-to-play">How to Play</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#related-games">More Games</a></li>
+                    <button class="theme-toggle" id="themeToggle">🌙</button>
+                </ul>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container hero-content">
-            <h1>Experience the 2D Minecraft Adventure</h1>
-            <p>Explore, craft, and create a world of your imaginings in this open-world playground. Mine Blocks is a 2D Minecraft fan action game with regular updates from the development team.</p>
-            <div class="hero-btns">
-                <a href="#game" class="btn">Play Now</a>
-                <a href="#how-to-play" class="btn" style="background-color: transparent; border: 2px solid white;">Learn How to Play</a>
-            </div>
-        </div>
-        <div class="scroll-down">↓</div>
+    <section class="hero">
+        <h1>Minecraft Blox Dimension</h1>
+        <p>Experience an exciting voxel adventure featuring parkour challenges, creative sandbox modes, and thrilling combat. Join millions of players in this free browser-based game!</p>
+        <a href="#play" class="btn">Play Now</a>
     </section>
 
-    <!-- Game Embed Section -->
-    <section class="game-section" id="game">
-        <div class="container">
-            <h2>Play Minecraft Block Explorer</h2>
+    <section id="play">
+        <h2 class="section-title">Play Minecraft Blox Dimension</h2>
+        <div class="game-container">
+            <div class="game-loader" id="gameLoader">
+                <div class="loader"></div>
+                <p>Loading game...</p>
+            </div>
             <div class="game-controls">
-                <button class="game-control-btn" id="refreshGame" title="Refresh">
-                    🔄
+                <button class="game-control-btn" id="refreshGame" title="Refresh Game">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+                        <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
+                    </svg>
                 </button>
                 <button class="game-control-btn" id="fullscreenGame" title="Fullscreen">
-                    ⛶
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z"/>
+                    </svg>
                 </button>
             </div>
-            <div class="game-container">
-                <div class="game-overlay">
-                    <div class="loader"></div>
-                    <p>Loading Game...</p>
-                </div>
-                <iframe class="game-iframe" id="gameIframe" src="https://games.crazygames.com/en_US/mine-blocks/index.html?v=1.327" allowfullscreen></iframe>
+            <iframe class="game-iframe" id="gameIframe" src="https://games.crazygames.com/en_US/bloxdhop-io/index.html?v=1.327" title="Minecraft Blox Dimension Game" allow="fullscreen" loading="lazy"></iframe>
+        </div>
+
+        <div class="social-share">
+            <a href="https://twitter.com/intent/tweet?text=Play%20Minecraft%20Blox%20Dimension%20-%20An%20exciting%20voxel%20adventure%20game!&url=https://minecraft-blox-dimension.com" target="_blank" rel="noopener noreferrer" class="social-btn twitter" title="Share on Twitter">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+                </svg>
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://minecraft-blox-dimension.com" target="_blank" rel="noopener noreferrer" class="social-btn facebook" title="Share on Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H6.75V16h4.516c4.418 0 8-3.582 8-8.05z"/>
+                </svg>
+            </a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://minecraft-blox-dimension.com&title=Minecraft%20Blox%20Dimension&summary=An%20exciting%20voxel%20adventure%20game!" target="_blank" rel="noopener noreferrer" class="social-btn linkedin" title="Share on LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+                </svg>
+            </a>
+            <a href="https://www.reddit.com/submit?url=https://minecraft-blox-dimension.com&title=Minecraft%20Blox%20Dimension%20-%20Exciting%20Voxel%20Adventure%20Game" target="_blank" rel="noopener noreferrer" class="social-btn reddit" title="Share on Reddit">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M6.167 8a.831.831 0 0 0-.83.83c0 .459.372.84.83.831a.831.831 0 0 0 0-1.661zm1.843 3.647c.315 0 1.403-.038 1.976-.611a.232.232 0 0 0 0-.306.213.213 0 0 0-.306 0c-.353.363-1.126.487-1.67.487-.545 0-1.308-.124-1.671-.487a.213.213 0 0 0-.306 0 .213.213 0 0 0 0 .306c.564.563 1.652.61 1.977.61zm.992-2.807c0 .458.373.83.831.83.458 0 .83-.381.83-.83a.831.831 0 0 0-1.661 0z"/>
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.828-1.165c-.315 0-.602.124-.812.325-.801-.573-1.9-.945-3.121-.993l.534-2.501 1.738.372a.83.83 0 1 0 .83-.869.83.83 0 0 0-.744.468l-1.938-.41a.203.203 0 0 0-.153.028.186.186 0 0 0-.086.134l-.592 2.788c-1.24.038-2.358.41-3.17.992-.21-.2-.496-.324-.81-.324a1.163 1.163 0 0 0-.478 2.224c-.02.115-.029.23-.029.353 0 1.795 2.091 3.256 4.669 3.256 2.577 0 4.668-1.451 4.668-3.256 0-.114-.01-.238-.029-.353.401-.181.688-.592.688-1.069 0-.65-.525-1.165-1.165-1.165z"/>
+                </svg>
+            </a>
+            <a href="https://www.tiktok.com/share?url=https://minecraft-blox-dimension.com" target="_blank" rel="noopener noreferrer" class="social-btn tiktok" title="Share on TikTok">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <section id="features">
+        <h2 class="section-title">Game Features</h2>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🧩</div>
+                <h3>Multiple Game Modes</h3>
+                <p>Enjoy various game modes including parkour challenges, creative building, survival, and exciting PvP combat.</p>
             </div>
-            <div class="share-buttons">
-                <a href="#" class="share-btn twitter" aria-label="Share on Twitter">
-                    <span>𝕏</span>
-                </a>
-                <a href="#" class="share-btn facebook" aria-label="Share on Facebook">
-                    <span>f</span>
-                </a>
-                <a href="#" class="share-btn linkedin" aria-label="Share on LinkedIn">
-                    <span>in</span>
-                </a>
-                <a href="#" class="share-btn reddit" aria-label="Share on Reddit">
-                    <span>r</span>
-                </a>
-                <a href="#" class="share-btn tiktok" aria-label="Share on TikTok">
-                    <span>♪</span>
-                </a>
+            <div class="feature-card">
+                <div class="feature-icon">🌐</div>
+                <h3>Multiplayer Experience</h3>
+                <p>Connect with friends and players worldwide in this exciting multiplayer voxel adventure.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏆</div>
+                <h3>Achievement System</h3>
+                <p>Earn gold from your achievements and spend it in the store to customize your character.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎮</div>
+                <h3>Browser-Based</h3>
+                <p>Play instantly in your browser with no downloads required on both desktop and mobile devices.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3>Regular Updates</h3>
+                <p>Enjoy new content, modes, and features with regular game updates and improvements.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💯</div>
+                <h3>Completely Free</h3>
+                <p>Experience all game features without any cost - free to play with optional in-game purchases.</p>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="container">
-            <h2>Game Features</h2>
-            <p>Discover what makes Minecraft Block Explorer an exciting adventure</p>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🏠</div>
-                    <h3>Survival & Creative Modes</h3>
-                    <p>Choose between challenging survival gameplay or unlimited creative freedom to build anything you imagine.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">👥</div>
-                    <h3>Online Multiplayer</h3>
-                    <p>Join your friends online and compete in the exciting scavenger hunt mode, racing to find all items first!</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💾</div>
-                    <h3>Save Your Progress</h3>
-                    <p>Your worlds and creations are saved automatically, so you can continue your adventure anytime.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔨</div>
-                    <h3>Crafting System</h3>
-                    <p>Collect resources and combine them to craft tools, weapons, and building materials.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🌍</div>
-                    <h3>Infinite Worlds</h3>
-                    <p>Explore procedurally generated worlds with different biomes, caves, and structures.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎮</div>
-                    <h3>Simple Controls</h3>
-                    <p>Easy to learn controls similar to the original Minecraft, making it accessible for all players.</p>
-                </div>
-            </div>
+    <section id="how-to-play">
+        <h2 class="section-title">How to Play</h2>
+        <div class="how-to-play">
+            <ol>
+                <li><strong>Choose Your Mode:</strong> Select from various game modes including BloxdHop (parkour), DoodleCube (creative drawing), Peaceful (sandbox building), and CubeWarfare (combat).</li>
+                <li><strong>Master the Controls:</strong> Use WASD to move, Shift or double-tap W to run, Space to jump, and C or Z to crouch. Press T or Enter to chat with other players.</li>
+                <li><strong>Complete Challenges:</strong> In BloxdHop mode, navigate through challenging obstacle courses by timing your jumps accurately to reach the end of the map.</li>
+                <li><strong>Build and Create:</strong> In Peaceful mode, collect resources and build your own structures in a sandbox environment similar to Minecraft's creative mode.</li>
+                <li><strong>Battle Others:</strong> In combat modes like CubeWarfare, compete against other players in exciting battles while also building defensive structures.</li>
+            </ol>
+            <p><strong>Pro Tip:</strong> Use commands like "/rtv" to vote for skipping the current map, "/players" to see who's in your lobby, and "/xp" to check your level and experience points.</p>
         </div>
     </section>
 
-    <!-- How to Play Section -->
-    <section class="how-to-play" id="how-to-play">
-        <div class="container">
-            <h2>How to Play</h2>
-            <p>Get started with these simple steps to begin your Minecraft Block Explorer adventure</p>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Choose Your Game Mode</h3>
-                        <p>Select either Survival mode for a challenging adventure where you'll need to gather resources and defend yourself, or Creative mode for unlimited blocks and flying abilities to build freely.</p>
-                    </div>
+    <section id="faq">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq">
+            <div class="faq-item">
+                <div class="faq-question">
+                    When was Minecraft Blox Dimension released?
+                    <span class="faq-toggle">+</span>
                 </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Learn the Controls</h3>
-                        <p>Move your character with the WASD keys. Sprint by double-tapping A or D. Collect resources by clicking and holding on nearby blocks or creatures. Place blocks by right-clicking on an empty space.</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Craft and Build</h3>
-                        <p>Open your inventory by pressing E. Here, you can craft items and equip armor. Combine materials to create tools, weapons, and building blocks to construct your shelter.</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                        <h3>Survive and Explore</h3>
-                        <p>In Survival mode, you'll need to manage your hunger, health, and defend against hostile mobs. Build a shelter before nightfall when monsters come out. Explore caves, find rare resources, and expand your world.</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-number">5</div>
-                    <div class="step-content">
-                        <h3>Join Multiplayer (Optional)</h3>
-                        <p>For an extra challenge, join the online scavenger hunt where you can team up with friends to find all 10 items in just 8 minutes before anyone else!</p>
-                    </div>
+                <div class="faq-answer">
+                    <p>Minecraft Blox Dimension was officially released in early 2021 and has been continuously updated with new features and game modes since then.</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="faq" id="faq">
-        <div class="container">
-            <h2>Frequently Asked Questions</h2>
-            <div class="faq-list">
-                <div class="faq-item">
-                    <div class="faq-question">Does Minecraft Block Explorer have multiplayer?</div>
-                    <div class="faq-answer">
-                        <p>Yes, the game offers a multiplayer mode. You can team up with friends online to compete in a scavenger hunt, racing to find all 10 items in just 8 minutes before anyone else!</p>
-                    </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is Minecraft Blox Dimension safe to play?
+                    <span class="faq-toggle">+</span>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question">When was Minecraft Block Explorer released?</div>
-                    <div class="faq-answer">
-                        <p>Minecraft Block Explorer was originally released in Flash format and has been rebuilt in HTML5. The HTML5 version has been available since 2021 and receives regular updates from the development team.</p>
-                    </div>
+                <div class="faq-answer">
+                    <p>Yes, Minecraft Blox Dimension is safe to play. As of 2024, there have been no reports of private information leaks. We recommend creating a personal account to ensure safe playing and to save your progress.</p>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question">What's the difference between Survival and Creative mode?</div>
-                    <div class="faq-answer">
-                        <p>In Survival mode, you need to collect resources, craft tools, build shelter, and defend against hostile mobs. You have limited health and hunger to manage. In Creative mode, you have unlimited resources, can fly, and won't take damage, allowing you to focus entirely on building and creating.</p>
-                    </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    What are the different game modes available?
+                    <span class="faq-toggle">+</span>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question">Can I save my progress in the game?</div>
-                    <div class="faq-answer">
-                        <p>Yes, your worlds and creations are saved automatically. This allows you to continue your adventure whenever you return to the game. You can also manually save your progress through the in-game menu.</p>
-                    </div>
+                <div class="faq-answer">
+                    <p>Minecraft Blox Dimension offers a variety of game modes including BloxdHop (parkour challenges), DoodleCube (creative drawing), EvilTower (vertical parkour), Peaceful (sandbox building), CubeWarfare (combat), Survival, Creative, Bedwars, Sky Wars, and many more!</p>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question">What are the system requirements?</div>
-                    <div class="faq-answer">
-                        <p>Minecraft Block Explorer is a browser-based game that runs on HTML5, so it requires a relatively modern browser. It works on most devices including desktops, laptops, tablets, and even some mobile phones. No installation or plugins are required.</p>
-                    </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Who created Minecraft Blox Dimension?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Minecraft Blox Dimension was created by an independent game developer named Arthur who continues to update and maintain the game with new features and improvements.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Does the game work on mobile devices?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, Minecraft Blox Dimension is designed to work on both desktop and mobile web browsers, though the experience is optimized for desktop play. Mobile controls are adapted to touch screens for a smooth gaming experience.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Related Games Section -->
-    <section class="related-games" id="related-games">
-        <div class="container">
-            <h2>More Games You'll Love</h2>
-            <p>If you enjoy Minecraft Block Explorer, check out these similar games:</p>
-            <div class="games-grid">
+    <section id="related-games">
+        <h2 class="section-title">More Games Like This</h2>
+        <div class="related-games">
                 <a href="https://ragdoll-archers.app/" class="game-card">
                     <img src="./img/tmp.jpg" alt="Bloxd.io" class="game-thumb">
                     <div class="game-info">
@@ -1000,259 +817,158 @@
                         <p class="game-desc">A similar voxel-based building game with multiple game modes.</p>
                     </div>
                 </a>
-            </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Minecraft Block Explorer</h3>
-                    <p>Experience the 2D Minecraft adventure with survival and creative modes. Build, craft, and explore in this engaging sandbox game.</p>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#game">Play Now</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#how-to-play">How to Play</a></li>
-                        <li><a href="#faq">FAQ</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Legal</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
-                        <li><a href="#">DMCA</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact</h3>
-                    <ul class="footer-links">
-                        <li><a href="mailto:contact@minecraft-block-explorer.com">Email Us</a></li>
-                        <li><a href="#">Discord Community</a></li>
-                        <li><a href="#">Report a Bug</a></li>
-                    </ul>
-                </div>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <h3>Minecraft Blox Dimension</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#play">Play Game</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-to-play">How to Play</a></li>
+                </ul>
             </div>
-            <div class="copyright">
-                <p>&copy; 2025 Minecraft Block Explorer. All rights reserved. This is a fan-made website and is not affiliated with Mojang or Microsoft.</p>
+            <div class="footer-links">
+                <h3>Community</h3>
+                <ul>
+                    <li><a href="#">Discord</a></li>
+                    <li><a href="#">YouTube</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Facebook</a></li>
+                </ul>
             </div>
+            <div class="footer-links">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2024 Minecraft Blox Dimension. All rights reserved. Not affiliated with Mojang or Microsoft.
         </div>
     </footer>
 
-    <!-- Cookie Consent -->
-    <div class="cookie-consent">
-        <div class="cookie-text">
-            <p>We use cookies to enhance your browsing experience. By continuing to use our website, you agree to our <a href="#">Cookie Policy</a>.</p>
-        </div>
-        <div class="cookie-btns">
-            <button class="btn cookie-accept">Accept</button>
-            <button class="btn cookie-decline" style="background-color: transparent; border: 1px solid white;">Decline</button>
-        </div>
+    <div class="cookie-alert" id="cookieAlert">
+        <p>We use cookies to enhance your gaming experience. By continuing to browse this site, you agree to our use of cookies.</p>
+        <button class="btn" id="acceptCookies">Accept</button>
     </div>
 
-    <!-- JavaScript -->
     <script>
-        // Theme Toggle
-        const themeToggle = document.querySelector('.theme-toggle');
+        // Theme toggle
+        const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
         
+        // Check for saved theme preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            body.classList.add('dark-mode');
+            themeToggle.textContent = '☀️';
+        }
+        
         themeToggle.addEventListener('click', () => {
-            if (body.getAttribute('data-theme') === 'light') {
-                body.setAttribute('data-theme', 'dark');
-                themeToggle.textContent = '☀️';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                body.setAttribute('data-theme', 'light');
-                themeToggle.textContent = '🌙';
-                localStorage.setItem('theme', 'light');
-            }
-        });
-        
-        // Check for saved theme
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            body.setAttribute('data-theme', savedTheme);
-            themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
-        }
-        
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navLinks = document.querySelector('.nav-links');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
-        });
-        
-        // Close mobile menu when clicking on a link
-        const navLinksItems = document.querySelectorAll('.nav-links li a');
-        navLinksItems.forEach(item => {
-            item.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.textContent = '☰';
-            });
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 70,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-        
-        // Game iframe loading
-        const gameIframe = document.querySelector('.game-iframe');
-        const gameOverlay = document.querySelector('.game-overlay');
-        
-        gameIframe.addEventListener('load', () => {
-            // Simulate loading for better UX (remove in production if not needed)
-            setTimeout(() => {
-                gameOverlay.classList.add('hidden');
-            }, 2000);
-        });
-        
-        // FAQ Accordion
-        const faqItems = document.querySelectorAll('.faq-item');
-        
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
+            body.classList.toggle('dark-mode');
             
-            question.addEventListener('click', () => {
-                // Close all other items
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item) {
-                        otherItem.classList.remove('active');
-                    }
-                });
-                
-                // Toggle current item
-                item.classList.toggle('active');
-            });
-        });
-        
-        // Social Share Buttons
-        const shareButtons = document.querySelectorAll('.share-btn');
-        const pageUrl = encodeURIComponent(window.location.href);
-        const pageTitle = encodeURIComponent(document.title);
-        
-        shareButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                
-                let shareUrl = '';
-                
-                if (button.classList.contains('twitter')) {
-                    shareUrl = `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
-                } else if (button.classList.contains('facebook')) {
-                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
-                } else if (button.classList.contains('linkedin')) {
-                    shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`;
-                } else if (button.classList.contains('reddit')) {
-                    shareUrl = `https://www.reddit.com/submit?url=${pageUrl}&title=${pageTitle}`;
-                } else if (button.classList.contains('tiktok')) {
-                    shareUrl = `https://www.tiktok.com/`;
-                }
-                
-                window.open(shareUrl, '_blank', 'width=600,height=400');
-            });
-        });
-        
-        // Cookie Consent
-        const cookieConsent = document.querySelector('.cookie-consent');
-        const cookieAccept = document.querySelector('.cookie-accept');
-        const cookieDecline = document.querySelector('.cookie-decline');
-        
-        // Show cookie consent if not previously accepted
-        if (!localStorage.getItem('cookieConsent')) {
-            setTimeout(() => {
-                cookieConsent.classList.add('show');
-            }, 2000);
-        }
-        
-        cookieAccept.addEventListener('click', () => {
-            localStorage.setItem('cookieConsent', 'accepted');
-            cookieConsent.classList.remove('show');
-        });
-        
-        cookieDecline.addEventListener('click', () => {
-            localStorage.setItem('cookieConsent', 'declined');
-            cookieConsent.classList.remove('show');
-        });
-        
-        // Scroll Down Button in Hero Section
-        const scrollDownBtn = document.querySelector('.scroll-down');
-        
-        scrollDownBtn.addEventListener('click', () => {
-            const gameSection = document.querySelector('#game');
-            window.scrollTo({
-                top: gameSection.offsetTop - 70,
-                behavior: 'smooth'
-            });
+            if (body.classList.contains('dark-mode')) {
+                themeToggle.textContent = '☀️';
+                localStorage.setItem('darkMode', 'true');
+            } else {
+                themeToggle.textContent = '🌙';
+                localStorage.setItem('darkMode', 'false');
+            }
         });
 
-        // Game Controls
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+
+        // Game loader and controls
+        const gameLoader = document.getElementById('gameLoader');
+        const gameIframe = document.getElementById('gameIframe');
         const refreshGame = document.getElementById('refreshGame');
         const fullscreenGame = document.getElementById('fullscreenGame');
         
-        // Refresh game
+        gameIframe.addEventListener('load', () => {
+            setTimeout(() => {
+                gameLoader.style.opacity = '0';
+                setTimeout(() => {
+                    gameLoader.style.display = 'none';
+                }, 500);
+            }, 1500); // Show loader for at least 1.5 seconds for better UX
+        });
+        
+        // Refresh game button
         refreshGame.addEventListener('click', () => {
+            gameLoader.style.display = 'flex';
+            gameLoader.style.opacity = '1';
             gameIframe.src = gameIframe.src;
-            gameOverlay.classList.remove('hidden');
         });
         
-        // Fullscreen toggle
+        // Fullscreen button
         fullscreenGame.addEventListener('click', () => {
-            if (!document.fullscreenElement) {
-                if (gameIframe.requestFullscreen) {
-                    gameIframe.requestFullscreen();
-                } else if (gameIframe.webkitRequestFullscreen) {
-                    gameIframe.webkitRequestFullscreen();
-                } else if (gameIframe.msRequestFullscreen) {
-                    gameIframe.msRequestFullscreen();
-                }
-                fullscreenGame.innerHTML = '⛶';
+            const gameContainer = document.querySelector('.game-container');
+            
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
             } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                } else if (document.webkitExitFullscreen) {
-                    document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) {
-                    document.msExitFullscreen();
-                }
-                fullscreenGame.innerHTML = '⛶';
+                gameContainer.requestFullscreen().catch(err => {
+                    console.error(`Error attempting to enable fullscreen: ${err.message}`);
+                });
             }
         });
+
+        // FAQ accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
         
-        // Update fullscreen button text when exiting fullscreen
-        document.addEventListener('fullscreenchange', () => {
-            if (!document.fullscreenElement) {
-                fullscreenGame.innerHTML = '⛶';
-            }
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const toggle = question.querySelector('.faq-toggle');
+                
+                answer.classList.toggle('active');
+                toggle.textContent = answer.classList.contains('active') ? '-' : '+';
+            });
+        });
+
+        // Cookie alert
+        const cookieAlert = document.getElementById('cookieAlert');
+        const acceptCookies = document.getElementById('acceptCookies');
+        
+        // Check if user has already accepted cookies
+        if (!localStorage.getItem('cookiesAccepted')) {
+            setTimeout(() => {
+                cookieAlert.classList.add('show');
+            }, 2000);
+        }
+        
+        acceptCookies.addEventListener('click', () => {
+            localStorage.setItem('cookiesAccepted', 'true');
+            cookieAlert.classList.remove('show');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                }
+            });
         });
     </script>
 </body>
